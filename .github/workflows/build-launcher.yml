@@ -1,0 +1,35 @@
+name: Build Life Clicker Launcher
+
+on:
+  push:
+    paths:
+      - "launcher-src/**"
+      - ".github/workflows/build-launcher.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[launcher binary]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - name: Build Windows launcher
+        run: |
+          mkdir -p stable
+          GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o stable/LifeClicker_2.1.1.exe launcher-src/main.go
+          sha256sum stable/LifeClicker_2.1.1.exe | awk '{print $1}' > stable/LifeClicker_2.1.1.exe.sha256
+      - name: Commit launcher binary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stable/LifeClicker_2.1.1.exe stable/LifeClicker_2.1.1.exe.sha256
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Build Launcher 2.1.1 [launcher binary]"
+          git push
