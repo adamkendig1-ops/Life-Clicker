@@ -1,0 +1,1 @@
+Trigger build for Life Clicker Launcher 2.1.1 cache-safe online updater.
