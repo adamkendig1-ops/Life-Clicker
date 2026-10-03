@@ -47,40 +47,7 @@ jobs:
           (root/"START_LIFE_CLICKER.bat").write_text("@echo off\r\ncd /d %~dp0\r\nstart \"\" LifeClicker.exe\r\n",encoding="utf-8")
           (root/"userdata"/"backups"/"README.txt").write_text("Automatic save snapshots are stored here when created by the launcher.\n",encoding="utf-8")
           (root/"userdata"/"game-backups"/"README.txt").write_text("Pre-update game-code backups are stored here by the launcher.\n",encoding="utf-8")
-          readme="""LIFE CLICKER 7.0.6 — FINAL MANUAL REPLACEMENT
-================================================
-
-This is intended to be the LAST normal manual program replacement.
-
-Included:
-- Life Clicker 7.0.6
-- Save Version 12
-- Launcher 2.1.1
-- permanent stable online-update feed
-- cache-busted online update checks
-- automatic size + SHA-256 verification
-- save snapshot + game-code backup before online updates
-- business upgrade blocker explanations
-- exact-dollar Owner Investment
-- repaired Career offer acceptance
-
-ONE-TIME INSTALL
-----------------
-1. Completely close every old Life Clicker window.
-2. Extract this entire folder.
-3. Keep the old folder as a backup for now; do not delete it yet.
-4. Run LifeClicker.exe from THIS new folder.
-5. Confirm the launcher says Game 7.0.6 and Launcher 2.1.1.
-6. Click Check Online Updates.
-
-Your browser save origin remains http://127.0.0.1:8765, so using the same browser/profile
-preserves browser-local profiles. Do not run an old and new LifeClicker.exe at the same time.
-
-FUTURE UPDATES
---------------
-After this build, use the in-app online updater. Normal future releases should not
-require replacing the program folder manually.
-"""
+          readme="LIFE CLICKER 7.0.6 — FINAL MANUAL REPLACEMENT\\n================================================\\n\\nThis is intended to be the LAST normal manual program replacement.\\n\\nIncluded:\\n- Life Clicker 7.0.6\\n- Save Version 12\\n- Launcher 2.1.1\\n- permanent stable online-update feed\\n- cache-busted online update checks\\n- automatic size + SHA-256 verification\\n- save snapshot + game-code backup before online updates\\n- business upgrade blocker explanations\\n- exact-dollar Owner Investment\\n- repaired Career offer acceptance\\n\\nONE-TIME INSTALL\\n----------------\\n1. Completely close every old Life Clicker window.\\n2. Extract this entire folder.\\n3. Keep the old folder as a backup for now; do not delete it yet.\\n4. Run LifeClicker.exe from THIS new folder.\\n5. Confirm the launcher says Game 7.0.6 and Launcher 2.1.1.\\n6. Click Check Online Updates.\\n\\nYour browser save origin remains http://127.0.0.1:8765, so using the same browser/profile\\npreserves browser-local profiles. Do not run an old and new LifeClicker.exe at the same time.\\n\\nFUTURE UPDATES\\n--------------\\nAfter this build, use the in-app online updater. Normal future releases should not\\nrequire replacing the program folder manually.\\n"
           (root/"README_FIRST.txt").write_text(readme,encoding="utf-8")
           scripts=re.findall(r"<script[^>]*>([\s\S]*?)</script>",html,re.I)
           assert scripts
