@@ -1,19 +1,16 @@
 {
-  "gameVersion": "7.0.6",
+  "gameVersion": "7.0.7",
   "saveVersion": 12,
-  "minimumLauncherVersion": "2.1.0",
-  "updateUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/Life_Clicker_Update_7.0.6_Business_Career_Repair.lcupdate",
-  "sha256": "e3af492ab879d83bd9cb4e5312d0bc543e17fe101fb62072a420eb33099f70e8",
-  "size": 300030,
+  "minimumLauncherVersion": "2.1.1",
+  "updateUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/Life_Clicker_Update_7.0.7_Auto_Update_Validation.lcupdate",
+  "sha256": "37eb5f796e06bfe61c244567c785b9963a0a98823778af7234510aec3b386c40",
+  "size": 300185,
   "mandatory": false,
   "releaseNotes": [
-    "Business upgrades now explain the exact reason whenever an upgrade is unavailable.",
-    "Added exact-dollar Owner Investment controls similar to bank deposits, plus Invest All.",
-    "Reworked upgrade pricing and Current → After effects by capability, with recurring costs shown explicitly.",
-    "Capital purchases are tracked separately from ordinary monthly operating expenses.",
-    "Physical business assets can be purchased directly with company cash and installed immediately.",
-    "Career offers now use a direct acceptance path and show an exact blocker if they cannot be accepted.",
-    "Existing saves migrate to Save Version 12."
+    "Automatic updater validation release.",
+    "Confirms Launcher 2.1.1 can detect and install a newly published online update.",
+    "Adds a visible activity-log confirmation after installation.",
+    "No save-schema change; existing 7.0.6 business and career fixes are preserved."
   ],
   "launcherVersion": "2.1.1",
   "launcherUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/LifeClicker_2.1.1.exe",
