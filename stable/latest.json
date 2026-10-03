@@ -15,7 +15,7 @@
     "Career offers now use a direct acceptance path and show an exact blocker if they cannot be accepted.",
     "Existing saves migrate to Save Version 12."
   ],
-  "launcherVersion": "2.1.0",
-  "launcherUrl": "",
-  "launcherSha256": ""
+  "launcherVersion": "2.1.1",
+  "launcherUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/LifeClicker_2.1.1.exe",
+  "launcherSha256": "68234f7ce78c2483a7b7373273331fd70dabfaec8239e1efbadb48682837ca7b"
 }
