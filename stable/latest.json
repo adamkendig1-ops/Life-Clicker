@@ -1,16 +1,19 @@
 {
-  "gameVersion": "7.0.5",
-  "saveVersion": 11,
+  "gameVersion": "7.0.6",
+  "saveVersion": 12,
   "minimumLauncherVersion": "2.1.0",
-  "updateUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/Life_Clicker_Update_7.0.5_Online_Updater_Test.lcupdate",
-  "sha256": "ae2cbc66b17b2b070123dccaaa67bd336ef02a7920fbb65a3c312ccce189b941",
-  "size": 284651,
+  "updateUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/Life_Clicker_Update_7.0.6_Business_Career_Repair.lcupdate",
+  "sha256": "e3af492ab879d83bd9cb4e5312d0bc543e17fe101fb62072a420eb33099f70e8",
+  "size": 300030,
   "mandatory": false,
   "releaseNotes": [
-    "Online updater pipeline test.",
-    "No save-schema change and no new gameplay systems.",
-    "Adds a visible activity-log confirmation after successful installation.",
-    "Corrects static version text to display Life Clicker 7.0.5."
+    "Business upgrades now explain the exact reason whenever an upgrade is unavailable.",
+    "Added exact-dollar Owner Investment controls similar to bank deposits, plus Invest All.",
+    "Reworked upgrade pricing and Current → After effects by capability, with recurring costs shown explicitly.",
+    "Capital purchases are tracked separately from ordinary monthly operating expenses.",
+    "Physical business assets can be purchased directly with company cash and installed immediately.",
+    "Career offers now use a direct acceptance path and show an exact blocker if they cannot be accepted.",
+    "Existing saves migrate to Save Version 12."
   ],
   "launcherVersion": "2.1.0",
   "launcherUrl": "",
