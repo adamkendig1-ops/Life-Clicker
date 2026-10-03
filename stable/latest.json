@@ -1,0 +1,18 @@
+{
+  "gameVersion": "7.0.4",
+  "saveVersion": 11,
+  "minimumLauncherVersion": "2.1.0",
+  "updateUrl": "https://raw.githubusercontent.com/adamkendig1-ops/Life-Clicker/main/stable/Life_Clicker_Update_7.0.4_Crime_Mastery_Legacy_Clicks.lcupdate",
+  "sha256": "8f16247e0ad9ce73c21e279c826beaf44c7f11b972738b08a50af8ede712ad0d",
+  "size": 285112,
+  "mandatory": false,
+  "releaseNotes": [
+    "Legacy Click Mastery now gains exactly +1 training unit per completed character life.",
+    "Added independent uncapped crime specialty mastery tracks.",
+    "Expanded abstract crime opportunities with mastery-based payouts and unlocks.",
+    "Includes exact Cash ↔ Bank transfers and the Operational Front Expansion Market fix."
+  ],
+  "launcherVersion": "2.1.0",
+  "launcherUrl": "",
+  "launcherSha256": ""
+}
