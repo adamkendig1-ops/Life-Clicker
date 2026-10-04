@@ -1,0 +1,8 @@
+# Preserve the exact decoded game payload across Windows checkouts.
+/game/index.html -text
+*.rs text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+
