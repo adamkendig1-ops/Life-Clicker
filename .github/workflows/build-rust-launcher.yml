@@ -1,0 +1,44 @@
+name: Rust Launcher 3.0 Candidate
+on:
+  workflow_dispatch:
+  push:
+    branches: [rust-launcher-3.0.0]
+  pull_request:
+    paths:
+      - 'launcher-rust/**'
+      - 'launcher-ui/**'
+      - 'game/**'
+      - 'tools/**'
+      - 'Cargo.*'
+      - '.github/workflows/build-rust-launcher.yml'
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Rust MSVC toolchain
+        run: |
+          rustup toolchain install 1.98.0 --profile minimal --component rustfmt --component clippy --target x86_64-pc-windows-msvc
+          rustup default 1.98.0
+      - name: Validate source and browser logic
+        run: |
+          node tools/validate.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node tools/ui-test.mjs
+      - run: cargo fmt --check
+      - run: cargo test --locked --target x86_64-pc-windows-msvc
+      - run: cargo clippy --locked --all-targets --target x86_64-pc-windows-msvc -- -D warnings
+      - run: cargo build --locked --release --target x86_64-pc-windows-msvc
+      - run: node tools/smoke.mjs target/x86_64-pc-windows-msvc/release/LifeClicker.exe
+      - run: node tools/self-update-smoke.mjs target/x86_64-pc-windows-msvc/release/LifeClicker.exe
+      - run: node tools/assemble.mjs target/x86_64-pc-windows-msvc/release/LifeClicker.exe dist/LifeClicker-3.0.0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LifeClicker-3.0.0-Windows-candidate
+          path: dist/LifeClicker-3.0.0/
+          if-no-files-found: error

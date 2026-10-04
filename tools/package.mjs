@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { root, text, validate } from './validate.mjs';
+validate();
+const [version, saveVersionText, notesFile, output] = process.argv.slice(2);
+const saveVersion = Number(saveVersionText);
+if (!/^\d+\.\d+\.\d+$/.test(version || '') || !Number.isSafeInteger(saveVersion) || saveVersion < 1 || !notesFile || !output) throw new Error('Usage: node tools/package.mjs VERSION SAVE_VERSION notes.json OUTPUT.lcupdate');
+const destination = path.resolve(output);
+if (destination === path.join(root, 'stable') || destination.startsWith(path.join(root, 'stable') + path.sep)) throw new Error('Package generation must be separate from stable publication; choose dist/ output');
+const notes = JSON.parse(text(notesFile));
+if (!Array.isArray(notes) || notes.some(n => typeof n !== 'string')) throw new Error('Notes must be a JSON array of strings');
+const appHtml = text(path.join(root, 'game/index.html'));
+if (!appHtml.includes(`VERSION='${version}'`) || !appHtml.includes(`SAVE_VERSION=${saveVersion}`)) throw new Error('Requested version must match game source constants');
+const bytes = Buffer.from(JSON.stringify({ version, saveVersion, notes, appHtml }) + '\n', 'utf8');
+fs.mkdirSync(path.dirname(destination), { recursive: true });
+fs.writeFileSync(destination, bytes, { flag: 'wx' });
+console.log(JSON.stringify({ path: destination, size: bytes.length, sha256: crypto.createHash('sha256').update(bytes).digest('hex') }, null, 2));
