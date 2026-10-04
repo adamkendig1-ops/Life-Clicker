@@ -10,6 +10,7 @@ on:
       - 'game/**'
       - 'tools/**'
       - 'Cargo.*'
+      - '.cargo/**'
       - '.github/workflows/build-rust-launcher.yml'
 permissions:
   contents: read

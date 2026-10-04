@@ -7,6 +7,10 @@ mechanics as part of launcher maintenance. `launcher-ui/launcher.html` and
 
 From the repository root (Rust 1.98+, Windows x64 MSVC and Node.js required):
 
+The Windows target configuration statically links the C runtime so the release
+EXE does not depend on a separately installed `VCRUNTIME140.dll`. Compiler and
+Node.js tools are only needed for development, not for the assembled installation.
+
 ```powershell
 node tools/validate.mjs
 node tools/ui-test.mjs
@@ -44,6 +48,17 @@ It creates temporary installations, launches no browser, uses only synthetic
 snapshots, and retains fixture files for inspection. Rust tests also use temporary
 directories and inject replacement failures. `tools/ui-test.mjs` executes the
 actual launcher JS with a browser-API fixture; it is not a full browser test.
+
+For final release validation of an assembled folder or independently extracted
+ZIP, use `node tools/release-candidate-check.mjs ABSOLUTE_INSTALL_FOLDER`.
+It starts that folder's EXE with the installation as its working directory and
+without `--root`; validates served files against the installation; runs the
+served launcher JS against the live API and HTTPS update feed with a browser-
+storage access trap; checks manual updates and second-instance behavior; then
+shuts down and verifies that every installation file is unchanged. Port 8765
+must be free and outbound HTTPS must be available. `--serve` allows a visual
+check in a separate test browser instead; stop it through the launcher Exit
+button. Never open the game or real browser profile during release validation.
 
 ## Release preparation (no publication)
 

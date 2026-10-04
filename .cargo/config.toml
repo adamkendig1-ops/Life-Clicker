@@ -1,0 +1,4 @@
+# The complete-folder Windows release must not require a separately installed
+# Visual C++ runtime. Windows system DLLs remain normal platform dependencies.
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
