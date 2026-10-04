@@ -16,6 +16,9 @@ EXE-only upgrade. Stable publication and merging remain unauthorized.
   Go launcher and original workflows remain unchanged.
 - No merge, stable publication or real production-save inspection/modification occurred.
 - Developer and automated tests used isolated storage and synthetic snapshots.
+- Master game specifications are retained under `docs/specs/` in documentation-only
+  commit `1386e625fe1b53ac2dcb39251516be3e36b3a072`; the working tree was clean
+  immediately after that commit. No launcher implementation was repeated.
 
 ## Added source and architecture
 
@@ -97,6 +100,9 @@ The dev browser visibly showed DEV MODE and loaded the 7.0.7 profile screen.
 | Live HTTPS startup and forced manual update checks | PASS: both installations; up to date; no installation requested |
 | Real production browser UI and Exit button | PASS: versions visible, no DEV MODE, update dialog, no browser errors, clean shutdown |
 | Separate ZIP extraction without repository dependencies | PASS |
+| Every launcher-used API, including open-folder and explicit no-op online install | PASS: separate fixture copy, synthetic saves only |
+| ZIP CRC-32, entry sizes, decompression and exact file list | PASS: all 8 files |
+| ZIP checker negative control | PASS: intentionally corrupted CRC rejected |
 | Static Windows runtime dependency inspection | PASS: Windows system DLLs only |
 | GitHub-hosted CI execution | Separate from these completed local gates; branch push can trigger candidate-only CI |
 
@@ -132,7 +138,7 @@ Final ZIP (2,252,553 bytes):
 `dist/Life_Clicker_7.0.7_Rust_Launcher_3.0.0_Release_Candidate.zip`
 
 ZIP SHA-256:
-`d7039e4924bfa872917f47c9aa6073e6ae7ddafc3bdb6cc4e9bd0221685f8e97`
+`1983964c82b89665dfdf005439cce3dab5f310439927b06411009be95991e1b5`
 
 Exact files at the ZIP root and subdirectories:
 

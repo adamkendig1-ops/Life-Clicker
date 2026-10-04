@@ -60,6 +60,17 @@ must be free and outbound HTTPS must be available. `--serve` allows a visual
 check in a separate test browser instead; stop it through the launcher Exit
 button. Never open the game or real browser profile during release validation.
 
+`node tools/api-contract-smoke.mjs ABSOLUTE_INSTALL_FOLDER` copies a complete
+installation into another temporary directory and explicitly exercises every
+launcher-used API with synthetic snapshots. It also opens the fixture's data
+folder in Windows Explorer. The online install endpoint is tested only when
+the live feed reports no update, so it must return an up-to-date no-op.
+
+After creating the release ZIP, run `node tools/validate-zip.mjs PATH_TO_ZIP`.
+The checker independently decompresses each entry and validates CRC-32, byte
+size and the exact eight-file runtime inventory. Documentation/specifications
+remain in the repository and are not runtime installation dependencies.
+
 ## Release preparation (no publication)
 
 For a future game release, edit the source version constant and corresponding
